@@ -72,17 +72,20 @@ public class MainActivity extends AppCompatActivity {
                 String nums = number_of_people.getText().toString();
                 double num = Double.parseDouble(nums);
 
-                double each = total_bill / num;
+                String discount = discount_given.getText().toString();
+                double discount_got = Double.parseDouble(discount);
+
+                double each = (total_bill * (1-discount_got) ) / num;
 
 
 
                 if (strRadio == R.id.cash) {
                     strDisplay = "Total Bill: $" + total_bill ;
-                    strDisplay += "Each pays: " + num + " in cash."
+                    strDisplay += "Each pays: " + num + " in cash.";
 
                 }
                 else{
-                    strDisplay = "Total Bill: $" + total_bill + num + " via PayNow to 912345678"
+                    strDisplay = "Total Bill: $" + total_bill + num + " via PayNow to 912345678";
                 }
 
                 total_bills.setText(strDisplay);
@@ -94,24 +97,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                cost.setValue = " ";
-
-
-
-
+                cost.setText(" ");
+                number_of_people.setText(" ");
+                discount_given.setText(" ");
+                yes_gst.setChecked(false);
+                yes_svc.setChecked(false);
 
 
 
             }
         });
-
-
-
-
-
-
-
-
 
 
     }
